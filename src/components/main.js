@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import {View, Text} from 'react-native'
+import Game from './Game'
 export default class Main extends Component {
     render() {
         return (
-            <View>
-             <Text>my app</Text>   
-            </View>
+            <Game/>
         )
     }
 }
