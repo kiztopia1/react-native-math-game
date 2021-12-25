@@ -3,7 +3,7 @@ import Game from './Game'
 export default class Main extends Component {
     render() {
         return (
-            <Game/>
+            <Game choose={6}/>
         )
     }
 }

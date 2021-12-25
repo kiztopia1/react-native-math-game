@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 export default class Game extends Component {
-    Target = 10 + Math.floor(40 * Math.random())
+    choose = this.props.choose
+    randomArray = Array
+        .from({length: this.props.choose})
+        .map(() => 1 + Math.floor(10 * Math.random()))
+    target = this.randomArray
+        .slice(0, 4)
+        .reduce((acc, curr) => acc+curr, 0);
     render() {
         return (
             <View  style={styles.container} >
-             <Text style={styles.target}>{this.Target}</Text>  
+             <Text style={styles.target}>{this.Target} {this.target}</Text>  
+            
+            {this.randomArray.map((number, index) => (
+                <text key={index}>{number}</text>
+            ))}
             </View>
         )
     }
