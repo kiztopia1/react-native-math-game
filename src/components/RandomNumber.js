@@ -3,7 +3,11 @@ import {Text, TouchableOpacity ,StyleSheet} from 'react-native'
 function RandomNumber({no, index,isSelected, onPress}) {
 
     const pressHandler = () => {
+        if(isSelected){
+            return;
+        }
         onPress(index)
+        
     }
     return (
         <TouchableOpacity onPress={pressHandler}>

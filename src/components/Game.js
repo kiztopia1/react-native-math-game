@@ -3,7 +3,8 @@ import {View, Text, StyleSheet} from 'react-native'
 import RandomNumber  from './RandomNumber'
 export default class Game extends Component {
     state = {
-        selected : []
+        selected : [],
+        sum = 0 
     }
     choose = this.props.choose
     randomArray = Array
