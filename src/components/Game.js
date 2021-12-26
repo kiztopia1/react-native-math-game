@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import {View, Text, StyleSheet} from 'react-native'
+import RandomNumber  from './RandomNumber'
 export default class Game extends Component {
+    state = {
+        selected : []
+    }
     choose = this.props.choose
     randomArray = Array
         .from({length: this.props.choose})
@@ -8,6 +12,15 @@ export default class Game extends Component {
     target = this.randomArray
         .slice(0, 4)
         .reduce((acc, curr) => acc+curr, 0);
+
+    isSelected = (index) => {
+        return this.state.selected.indexOf(index) >= 0
+    }
+    selectNumber = (index) => {
+        this.setState(prevState => ({
+            selected: [...prevState.selected, index]
+        }))
+    }
     render() {
         return (
             <View  style={styles.container} >
@@ -15,7 +28,13 @@ export default class Game extends Component {
             
             <View style={styles.choosesCont}>
             {this.randomArray.map((number, index) => 
-                <Text style={styles.choose} key={index}>{number}</Text>
+                <RandomNumber 
+                key={index} 
+                    no={number} 
+                    index={index} 
+                    isSelected={this.isSelected(index)}
+                    onPress={this.selectNumber}
+                />
             )}
             </View>
             
@@ -45,15 +64,5 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         justifyContent: 'space-around'
     },
-    choose: {
-        textAlign: 'center',
-        marginVertical: 30,
-        marginHorizontal:50,
-        backgroundColor: 'gray',
-        width: '100px',
-        padding: '10px',
-        fontSize: '1.5rem',
-        borderRadius: 4
-        
-    }
+    
   });
