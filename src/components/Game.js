@@ -13,9 +13,12 @@ export default class Game extends Component {
             <View  style={styles.container} >
              <Text style={styles.target}>{this.Target} {this.target}</Text>  
             
-            {this.randomArray.map((number, index) => (
-                <text key={index}>{number}</text>
-            ))}
+            <View style={styles.choosesCont}>
+            {this.randomArray.map((number, index) => 
+                <Text style={styles.choose} key={index}>{number}</Text>
+            )}
+            </View>
+            
             </View>
         )
     }
@@ -32,9 +35,25 @@ const styles = StyleSheet.create({
         marginTop: 30,
         marginHorizontal: 50,
         backgroundColor: 'gray',
-        display: "inline",
         padding:20,
         borderRadius: 4,
         fontSize: '2rem'
+    },
+    choosesCont: {
+
+        flexDirection: 'row',
+        flexWrap: "wrap",
+        justifyContent: 'space-around'
+    },
+    choose: {
+        textAlign: 'center',
+        marginVertical: 30,
+        marginHorizontal:50,
+        backgroundColor: 'gray',
+        width: '100px',
+        padding: '10px',
+        fontSize: '1.5rem',
+        borderRadius: 4
+        
     }
   });
